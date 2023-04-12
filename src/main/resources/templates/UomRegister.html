@@ -1,0 +1,32 @@
+<html xmlns:th="https://www.thymeleaf.org/">
+<head>
+<title></title>
+</head>
+
+<body>
+<h3>WELCOME TO UOM REGISTER PAGE</h3>
+<form action="save" method="POST">
+<pre>
+	
+	<!-- MULTI SELECT -->
+	UOM Type 	: 		<select name="uomType">
+							<option>--SELECT--</option>
+							<option>Parking</option>
+							<option>No Parking</option>
+						</select>
+	
+	<!-- TEXT AREA -->						
+	Uom Model 	: 	<input type="text" name="uomModel">
+	
+	<!-- TEXT AREA -->
+	Description 	:	<textarea rows="" cols="" name="description"></textarea>
+	
+	<!-- BUTTON -->
+	<input type="submit" value="Create Uom"/>
+	
+</pre>
+</form>
+
+<span th:text=${message}></span>
+</body>
+</html>
