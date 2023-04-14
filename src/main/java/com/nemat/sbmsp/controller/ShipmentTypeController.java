@@ -11,9 +11,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.nemat.sbmsp.model.ShipmentType;
 import com.nemat.sbmsp.service.ShipmentTypeService;
+import com.nemat.sbmsp.view.ShipmentTypeExcelView;
 
 @Controller
 @RequestMapping("/shipmentType")
@@ -103,5 +105,17 @@ public class ShipmentTypeController {
 		List<ShipmentType> list = service.getAllShipmentType();
 		model.addAttribute("list", list);
 		return "ShipmentTypeData";
+	}
+	
+//	7. Export Data to Excel
+	@GetMapping("/excel")
+	public ModelAndView exportToExcel() {
+		ModelAndView m = new ModelAndView();
+		m.setView(new ShipmentTypeExcelView());
+		
+//		Send data to view class
+	List<ShipmentType> list = service.getAllShipmentType();
+		m.addObject("obs", list);
+		return m;
 	}
 }
