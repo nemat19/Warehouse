@@ -49,10 +49,13 @@
 						<td th:text="${ob.enableShipment}"></td>
 						<td th:text="${ob.shipmentGrade}"></td>
 						<td th:text="${ob.description}"></td>
-						<td><a th:href="@{/shipmentType/delete/{id}(id=${ob.id})}"
-						class="btn btn-danger">DELETE</a>
+						<td>
 							<a th:href="@{/shipmentType/edit/{id}(id=${ob.id})}"
-							class="btn btn-primary">EDIT</a></td>
+							class="btn btn-primary">EDIT</a>
+							<a th:href="@{/shipmentType/delete/{id}(id=${ob.id})}"
+							class="btn btn-danger">DELETE</a>
+							<a th:href="@{/shipmentType/excel/{id}(id=${ob.id})}"
+							class="btn btn-warning">Export</a></td>
 				</table>
 			</div>
 			<!-- CARD-BODY END -->

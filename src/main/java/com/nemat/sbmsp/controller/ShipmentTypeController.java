@@ -1,5 +1,6 @@
 package com.nemat.sbmsp.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -116,6 +117,20 @@ public class ShipmentTypeController {
 //		Send data to view class
 	List<ShipmentType> list = service.getAllShipmentType();
 		m.addObject("obs", list);
+		return m;
+	}
+	
+//	7. Export Single record to Excel
+	@GetMapping("/excel/{id}")
+	public ModelAndView exportOneToExcel(@PathVariable Integer id) {
+		ModelAndView m = new ModelAndView();
+		m.setView(new ShipmentTypeExcelView());
+		
+//		Send data to view class
+		Optional<ShipmentType> ost = service.getOneShipmentType(id);
+			if(ost.isPresent()) {
+				m.addObject("obs", Arrays.asList(ost.get()));
+			}
 		return m;
 	}
 }
